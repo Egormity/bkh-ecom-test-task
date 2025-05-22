@@ -39,7 +39,7 @@ type TGenerateToneKeys<TInput extends TInputModel, TTones extends Record<string,
 type TGenerateSubToneKeys<TInput extends TInputModel, TTones extends Record<string, TTone>> = {
 	[COLOR in keyof TInput & string]: {
 		[TONE in keyof TTones & string]: {
-			// !!!!!!!!!! FIXME: DOESN'T PROVIDE TYPES SAFETY AS EXPECTED !!!!!!!!!!!!
+			// !!!!!!!!!! FIXME: DOESN'T PROVIDE ["color_tone_subTone"] TYPES SAFETY AS EXPECTED !!!!!!!!!!!!
 			[SUB_TONE in keyof TTone["subTones"] & string]: `${COLOR}_${TONE}_${SUB_TONE}`;
 		}[keyof TTone["subTones"] & string];
 	}[keyof TTones & string];
@@ -182,7 +182,6 @@ const input = {
 	},
 } satisfies TInputModel;
 
-//
 const palette = createPalette(input, {
 	base: baseColors,
 	tones: {
@@ -191,3 +190,8 @@ const palette = createPalette(input, {
 	},
 });
 console.log(palette);
+console.log(palette.blue_brightness.foreground);
+console.log(palette.myColor);
+// !!!!!!!!!! FIXME: DOESN'T PROVIDE ["color_tone_subTone"] TYPES SAFETY AS EXPECTED !!!!!!!!!!!!
+// @ts-ignore
+console.log(palette.blue_brightness_low.white);
