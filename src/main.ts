@@ -87,7 +87,6 @@ const createPalette = <
 	input: Input,
 	options?: { base: BaseTone; tones: Tones }
 ): TPalette<Input, BaseTone, Tones> => {
-	console.log(options?.tones["brightness"]);
 	const result: TPalette<Input, BaseTone, Tones> = {} as TPalette<Input, BaseTone, Tones>;
 
 	Object.entries(input).forEach(([colorName, colorData]) => {
