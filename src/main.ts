@@ -182,6 +182,7 @@ const input = {
 	},
 } satisfies TInputModel;
 
+//
 const palette = createPalette(input, {
 	base: baseColors,
 	tones: {
